@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocaty - Solusi Digital UMKM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* * Ocaty Design System
+         * Tone: Professional, Calm, Modern
+         * Colors: Slate (Trust), Emerald (Growth), White (Cleanliness)
+         */
+
+        :root {
+            --primary: #0F766E; /* Deep Teal/Emerald */
+            --primary-hover: #115E59;
+            --secondary: #64748B; /* Slate Grey */
+            --bg-light: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-body: #475569;
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* UTILITIES */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 1.75rem;
+            font-weight: 500;
+            font-size: 1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            background-color: var(--bg-light);
+        }
+
+        .text-center { text-align: center; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 2rem; }
+
+        /* HEADER & NAVIGATION */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-body);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: #E0F2F1;
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* PROBLEM SECTION */
+        .problem-section {
+            background-color: var(--white);
+        }
+
+        .section-header {
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-header p {
+            color: var(--text-body);
+            font-size: 1.1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: #E2E8F0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .problem-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .problem-card p {
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        /* PRODUCT FOCUS SECTION (ERP Laundry) */
+        .product-section {
+            background-color: #F0FDF4; /* Very light green tint */
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .product-content p {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .check-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke: white;
+            stroke-width: 3;
+        }
+
+        .product-image {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            padding: 1rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Stylized UI Mockup using CSS */
+        .ui-mockup {
+            background: #f1f5f9;
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .ui-header {
+            height: 40px;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            gap: 0.5rem;
+        }
+        
+        .ui-dot { width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; }
+        .ui-body { flex: 1; padding: 1.5rem; display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; }
+        .ui-sidebar { background: white; border-radius: 6px; height: 100%; }
+        .ui-main { display: flex; flex-direction: column; gap: 0.75rem; }
+        .ui-card { background: white; height: 60px; border-radius: 6px; border: 1px solid #e2e8f0; }
+
+        /* FUTURE EXPANSION */
+        .future-section {
+            text-align: center;
+            background-color: var(--white);
+            padding: 6rem 0;
+        }
+        
+        .future-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .future-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .future-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-light);
+            border-radius: 50px;
+            color: var(--text-body);
+            font-weight: 500;
+        }
+        
+        .future-item.active {
+            background: #F0FDF4;
+            color: var(--primary);
+            border: 1px solid #BBF7D0;
+        }
+        
+        .future-item.coming-soon {
+            opacity: 0.6;
+        }
+
+        /* CTA FOOTER */
+        .cta-footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            border-radius: var(--radius);
+            margin: 0 auto 4rem;
+            max-width: var(--container-width);
+            width: 90%;
+        }
+        
+        .footer-content {
+            padding: 5rem 2rem;
+        }
+
+        .cta-footer h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem 0;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.875rem;
+            width: 100%;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 960px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .product-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .product-content {
+                order: 2;
+            }
+            .product-image {
+                order: 1;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .cta-footer h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 7V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Ocaty
+            </a>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="#masalah">Masalah</a></li>
+                    <li><a href="#solusi">Solusi</a></li>
+                    <li><a href="#fitur">Fitur</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Hubungi Kami</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero text-center">
+        <div class="container">
+            <span class="hero-tag">Kini Hadir untuk Bisnis Laundry</span>
+            <h1>Kelola Operasional Bisnis Anda<br>Lebih Rapi dan Efisien</h1>
+            <p>Tinggalkan catatan manual yang membingungkan. Ocaty membantu UMKM mengelola pesanan dan laporan dalam satu aplikasi sederhana.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#contact" class="btn btn-primary">Mulai Sekarang</a>
+                <a href="#solusi" class="btn btn-outline">Lihat Solusi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="masalah" class="section-padding problem-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Tantangan Bisnis Sehari-hari</h2>
+                <p>Kami mengerti betapa melelahkannya mengurus operasional secara manual.</p>
+            </div>
+            <div class="grid-3">
+                <div class="problem-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h3>Pencatatan Berantakan</h3>
+                    <p>Nota hilang, tulisan sulit dibaca, dan rekap harian yang memakan waktu berjam-jam setiap tutup toko.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <h3>Operasional Manual</h3>
+                    <p>Sulit memantau status pesanan pelanggan. Karyawan sering lupa mencatat detail penting pesanan.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <h3>Minim Visibilitas</h3>
+                    <p>Tidak tahu pasti berapa keuntungan bersih bulan ini karena data keuangan tercampur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / Focus Product Section -->
+    <section id="solusi" class="section-padding product-section">
+        <div class="container product-layout">
+            <div class="product-content">
+                <span style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; display: block;">PRODUK UNGGULAN KAMI</span>
+                <h2>Ocaty Laundry Management</h2>
+                <p>Sistem Kasir (POS) dan manajemen operasional yang dirancang khusus untuk pemilik usaha laundry kiloan dan satuan. Simpel, tanpa ribet.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span>Catat pesanan masuk & keluar dengan cepat</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span>Cetak nota digital (WhatsApp) atau fisik</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span>Laporan keuangan otomatis harian & bulanan</span>
+                    </div>
+                </div>
+
+                <a href="#contact" class="btn btn-primary">Coba Demo Gratis</a>
+            </div>
+            
+            <div class="product-image">
+                <!-- Abstract UI Representation -->
+                <div class="ui-mockup">
+                    <div class="ui-header">
+                        <div class="ui-dot" style="background:#ef4444"></div>
+                        <div class="ui-dot" style="background:#f59e0b"></div>
+                        <div class="ui-dot" style="background:#22c55e"></div>
+                    </div>
+                    <div class="ui-body">
+                        <div class="ui-sidebar"></div>
+                        <div class="ui-main">
+                            <div class="ui-card" style="display:flex; align-items:center; padding:0 1rem; justify-content:space-between;">
+                                <div style="width: 40%; height: 10px; background: #e2e8f0; border-radius: 4px;"></div>
+                                <div style="width: 20%; height: 20px; background: #dcfce7; border-radius: 4px;"></div>
+                            </div>
+                            <div class="ui-card" style="display:flex; align-items:center; padding:0 1rem; justify-content:space-between;">
+                                <div style="width: 50%; height: 10px; background: #e2e8f0; border-radius: 4px;"></div>
+                                <div style="width: 20%; height: 20px; background: #fff7ed; border-radius: 4px;"></div>
+                            </div>
+                            <div class="ui-card" style="display:flex; align-items:center; padding:0 1rem; justify-content:space-between;">
+                                <div style="width: 35%; height: 10px; background: #e2e8f0; border-radius: 4px;"></div>
+                                <div style="width: 20%; height: 20px; background: #dbeafe; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Expansion Section -->
+    <section class="future-section">
+        <div class="container">
+            <span class="future-badge">VISI KAMI</span>
+            <h2 style="font-size: 1.75rem; color: var(--text-dark);">Tumbuh Bersama Bisnis Anda</h2>
+            <p style="color: var(--text-body); max-width: 500px; margin: 1rem auto;">Ocaty terus berkembang untuk mendukung berbagai jenis usaha lokal di Indonesia.</p>
+            
+            <div class="future-grid">
+                <div class="future-item active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    Laundry ERP
+                </div>
+                <div class="future-item coming-soon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    Retail POS (Segera)
+                </div>
+                <div class="future-item coming-soon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    F&B Management (Segera)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Footer -->
+    <footer id="contact" class="container">
+        <div class="cta-footer">
+            <div class="footer-content">
+                <h2>Siap Merapikan Bisnis Anda?</h2>
+                <p style="color: #cbd5e1; max-width: 500px; margin: 0 auto 2rem;">Bergabunglah dengan pemilik laundry lainnya yang telah beralih ke digital. Mudah digunakan, bahkan untuk pemula.</p>
+                <a href="#" class="btn btn-primary" style="background-color: var(--white); color: var(--primary);">Hubungi Tim Sales</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Ocaty Indonesia. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Vanilla JS for smooth scrolling and mobile interaction
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Smooth Scroll behavior for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Offset for fixed header
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+
+            // Mobile Menu Toggle (Simple implementation)
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileBtn.addEventListener('click', () => {
+                const isHidden = getComputedStyle(navLinks).display === 'none';
+                if (isHidden) {
+                    navLinks.style.display = 'block';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '70px';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.background = 'white';
+                    navLinks.style.padding = '1rem';
+                    navLinks.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1)';
+                    navLinks.style.flexDirection = 'column';
+                    
+                    // Stack links vertically
+                    const ul = navLinks.querySelector('ul');
+                    ul.style.flexDirection = 'column';
+                    ul.style.gap = '1rem';
+                    ul.style.textAlign = 'center';
+                } else {
+                    navLinks.style.display = ''; // Reverts to CSS default (none for mobile, block for desktop)
+                    navLinks.removeAttribute('style'); // Clean up inline styles
+                }
+            });
+
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Select elements to animate
+            const animatedElements = document.querySelectorAll('.problem-card, .product-content, .product-image');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
