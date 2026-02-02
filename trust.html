@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocaty - Sistem Manajemen Bisnis Terstruktur</title>
+    <meta name="description" content="Ocaty membantu usaha kecil dan laundry mengelola operasional dengan rapi, aman, dan terstruktur.">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            /* Neutral, grounded palette */
+            --bg-body: #F9FAFB; /* Very light grey, almost white */
+            --bg-card: #FFFFFF;
+            --bg-footer: #1F2937;
+            
+            --text-main: #374151; /* Soft black */
+            --text-light: #6B7280; /* Grey for secondary text */
+            --text-inverse: #F3F4F6;
+
+            --primary: #4B5563; /* Slate grey - professional, not loud */
+            --primary-hover: #1F2937;
+            
+            --border-subtle: #E5E7EB;
+            --accent-blue: #E0F2FE; /* Very soft blue for highlights */
+            --accent-text-blue: #0369A1;
+
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+
+            --container-width: 1024px;
+            --radius: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            color: #111827;
+        }
+
+        h1 { font-size: 2.25rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.75rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 1rem; color: var(--text-main); }
+        
+        .subheadline {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .text-center { text-align: center; }
+        .mt-lg { margin-top: var(--spacing-lg); }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
+            background-color: var(--bg-body);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .section-white {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        /* --- GRID LAYOUTS --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* --- CARDS --- */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            border-radius: var(--radius);
+        }
+        
+        .card-transparent {
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        /* --- FEATURES & ICONS --- */
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: var(--bg-body);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .step-number {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        /* --- PRODUCT SHOWCASE --- */
+        .product-highlight {
+            background-color: var(--accent-blue);
+            color: var(--accent-text-blue);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--bg-footer);
+            color: var(--text-inverse);
+            padding: var(--spacing-lg) 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-note {
+            color: #9CA3AF;
+            max-width: 400px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.875rem; }
+            .hero { padding: var(--spacing-lg) 0; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">Ocaty</div>
+            <!-- Minimal Nav - no hamburger needed for single link -->
+            <a href="#how-it-works" style="color: var(--text-main); text-decoration: none; font-size: 0.9rem;">Cara Kerja</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section: Trust First -->
+    <header class="hero text-center">
+        <div class="container">
+            <h1>Operasional Bisnis yang Rapi<br>dan Terstruktur</h1>
+            <p class="subheadline">
+                Ocaty membantu usaha lokal mengelola catatan, inventaris, dan pelanggan dalam satu sistem yang tenang dan dapat diandalkan.
+            </p>
+            <a href="#product-focus" class="btn btn-primary">Lihat Fokus Kami</a>
+        </div>
+    </header>
+
+    <!-- Problem Section: Empathy -->
+    <section class="section-white" id="problem">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <h2>Bisnis Anda Layak Mendapatkan Ketenangan</h2>
+                    <p>Banyak pemilik usaha kecil menghabiskan terlalu banyak energi untuk hal-hal administratif manual.</p>
+                </div>
+                <div class="grid-3" style="margin-top:0; grid-template-columns: 1fr;">
+                    <div class="card card-transparent">
+                        <h3>Catatan yang Hilang</h3>
+                        <p style="color: var(--text-light);">Nota fisik sering terselip atau rusak, membuat rekap bulanan menjadi sulit.</p>
+                    </div>
+                    <div class="card card-transparent">
+                        <h3>Sistem yang Rumit</h3>
+                        <p style="color: var(--text-light);">Aplikasi kasir modern seringkali terlalu banyak fitur yang tidak pernah Anda pakai.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Ocaty Works: Transparency -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <h2>Sederhana, Bukan Magis</h2>
+                <p style="color: var(--text-light);">Kami tidak menjanjikan keajaiban instan. Kami menawarkan proses yang jelas.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <span class="step-number">Langkah 01</span>
+                    <h3>Input Data</h3>
+                    <p style="color: var(--text-light);">Masukkan data transaksi atau pelanggan melalui antarmuka yang bersih tanpa gangguan iklan atau tombol berlebih.</p>
+                </div>
+                <div class="card">
+                    <span class="step-number">Langkah 02</span>
+                    <h3>Pemrosesan</h3>
+                    <p style="color: var(--text-light);">Sistem Ocaty menyusun data Anda secara kronologis dan menyimpannya dengan aman di server privat.</p>
+                </div>
+                <div class="card">
+                    <span class="step-number">Langkah 03</span>
+                    <h3>Kendali Penuh</h3>
+                    <p style="color: var(--text-light);">Akses riwayat, status pesanan, dan laporan sederhana kapan saja Anda membutuhkannya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Initial Product Focus -->
+    <section class="section-white" id="product-focus">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <span class="product-highlight">Fokus Produk Saat Ini</span>
+                    <h2>Sistem ERP untuk Laundry</h2>
+                    <p>Saat ini, Ocaty mendedikasikan seluruh sumber daya pengembangan untuk membangun sistem terbaik bagi <strong>pengusaha Laundry</strong>.</p>
+                    <p>Kami memilih fokus pada satu industri terlebih dahulu untuk memastikan stabilitas, daripada meluncurkan fitur umum yang setengah matang.</p>
+                    <ul style="list-style: none; margin-top: 1.5rem; color: var(--text-main);">
+                        <li style="margin-bottom: 0.5rem;">✓ Pelacakan status cucian per item</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Manajemen pelanggan langganan</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Cetak struk yang efisien</li>
+                    </ul>
+                </div>
+                <div class="card" style="background-color: var(--bg-body); border: none; display: flex; align-items: center; justify-content: center; min-height: 300px;">
+                    <!-- Abstract representation of UI -->
+                    <div style="width: 80%; background: white; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 1.5rem;">
+                        <div style="height: 10px; width: 40%; background: #E5E7EB; margin-bottom: 1rem; border-radius: 4px;"></div>
+                        <div style="height: 10px; width: 70%; background: #F3F4F6; margin-bottom: 0.5rem; border-radius: 4px;"></div>
+                        <div style="height: 10px; width: 60%; background: #F3F4F6; margin-bottom: 0.5rem; border-radius: 4px;"></div>
+                        <div style="height: 1px; width: 100%; background: #E5E7EB; margin: 1.5rem 0;"></div>
+                        <div style="display: flex; gap: 10px;">
+                            <div style="height: 30px; width: 30px; background: #E0F2FE; border-radius: 50%;"></div>
+                            <div style="flex: 1;">
+                                <div style="height: 8px; width: 50%; background: #E5E7EB; margin-bottom: 4px; border-radius: 4px;"></div>
+                                <div style="height: 6px; width: 30%; background: #F3F4F6; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Future Direction -->
+    <section>
+        <div class="container text-center">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <h2>Keamanan dan Jangka Panjang</h2>
+                <p>Kami memahami kekhawatiran Anda menitipkan data bisnis ke sistem digital.</p>
+                
+                <div class="grid-2" style="text-align: left; margin-top: 3rem; gap: 2rem;">
+                    <div>
+                        <h3>Stabilitas di Atas Tren</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-light);">Kami tidak mengejar tren teknologi terbaru yang belum teruji. Ocaty dibangun dengan teknologi standar industri yang terbukti stabil selama bertahun-tahun.</p>
+                    </div>
+                    <div>
+                        <h3>Data Anda Milik Anda</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-light);">Model bisnis kami adalah layanan berbayar yang transparan, bukan menjual data perilaku belanja pelanggan Anda kepada pihak ketiga.</p>
+                    </div>
+                </div>
+
+                <div class="mt-lg" style="padding-top: 2rem; border-top: 1px solid var(--border-subtle);">
+                    <p style="font-size: 0.9rem; font-style: italic; color: var(--text-light);">
+                        Ke depan, Ocaty akan perlahan membuka dukungan untuk ritel kecil lainnya, namun hanya setelah sistem Laundry kami berjalan sempurna.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section-white text-center" style="padding: var(--spacing-xl) 0;">
+        <div class="container">
+            <h2>Mulai Rapikan Bisnis Anda</h2>
+            <p style="max-width: 500px; margin: 0 auto 2rem auto; color: var(--text-light);">
+                Diskusikan kebutuhan operasional Anda dengan tim kami. Tanpa paksaan, tanpa kewajiban.
+            </p>
+            <button class="btn btn-primary" onclick="showInterest()">Hubungi Tim Ocaty</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo" style="color: white;">Ocaty</div>
+            <div class="footer-note">
+                &copy; 2024 Ocaty Platform. Dibangun dengan hati-hati untuk bisnis lokal.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Minimal JS for Interaction -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple interaction for the CTA button
+        function showInterest() {
+            // In a real app, this would open a modal or navigate to a contact form
+            // Keeping it simple as requested: avoiding heavy alerts or popups
+            const btn = document.querySelector('.section-white .btn-primary');
+            const originalText = btn.innerText;
+            
+            btn.innerText = "Mengarahkan ke Email...";
+            btn.style.backgroundColor = "#374151";
+            
+            setTimeout(() => {
+                // Simulate mailto action
+                window.location.href = "mailto:halo@ocaty.com?subject=Tanya%20Tentang%20Ocaty";
+                // Reset button after action
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 1000);
+            }, 800);
+        }
+    </script>
+</body>
+</html>
